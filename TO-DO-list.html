@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>TODO list</title></head>
+
+<!--CSS-->
+<style>
+	.newEntry{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		background-color:goldenrod;
+		font-size: 15px;
+		border-radius: 6px;
+		box-shadow: 5px 5px 5px rgb(86, 85, 85);
+	}
+
+	.newEntry:hover{
+		opacity: 0.9; 
+		cursor: pointer;
+	}
+
+	.newEntry:active{
+		margin-top: 3px;
+		margin-left: 3px;
+		box-shadow: none;
+	}
+
+	.box{
+		background-color: darkgray;
+		border-radius: 10px;
+	}
+
+	.input{
+		width: 250px;
+		height: 50px;
+		font-size: 30px;
+	}
+</style>
+
+
+<body>
+
+	<h1>Hi! This is your personal TODO list, you can add whatever you want to keep trace of your jobs.</h1>
+	
+	<input placeholder="Add an entry..." id="stringa" type="text" class="input">
+	<button class="newEntry" onclick="
+			
+		addEntry();
+		document.querySelector('.newEntry').innerHTML='Add entry'">Please, press here to add a new entry</button>
+
+	<div class="box">
+		<p>TODO list:</p>
+		<ul id="todoList"></ul>
+	</div>
+
+
+	<script>
+		function addEntry(){ 
+			let entry = document.getElementById("stringa").value; //entry è il testo inserito dall'utente
+			let li = document.createElement("li");
+			let textNode = document.createTextNode(entry)
+			li.appendChild(textNode);
+			if(document.getElementById("stringa").value===''){
+				alert("You cannot add an empty entry. Please, write something.")
+			}else{
+				document.getElementById("todoList").appendChild(li);
+				document.getElementById("stringa").value='';
+			}
+		}
+			
+	</script>
+
+</body>
+
+</html>
